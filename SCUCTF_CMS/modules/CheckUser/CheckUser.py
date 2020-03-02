@@ -18,23 +18,33 @@ class Login:
         self.u_pass = passpord
         self.session = requests.session()
 
+    def get_response(self):
+        try:
+            postdata = {'Login.Token1': self.u_name, 'Login.Token2': self.u_pass,
+                        'goto': 'http://my.scu.edu.cn/loginSuccess.portal',
+                        'gotoOnFail': 'http://my.scu.edu.cn/loginFailure.portal'}
+            headers = {
+                'Referer': 'http://my.scu.edu.cn/',  # 伪装成从CSDN博客搜索到的文章
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36',
+                # 伪装成浏览器
+                'Connection': 'keep-alive',
+                'Accept-language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+                'Accept-encoding': 'gzip, deflate',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Host': 'my.scu.edu.cn'
+            }
+            response = self.session.post('http://my.scu.edu.cn/userPasswordValidate.portal', data=postdata,
+                                         headers=headers,
+                                         timeout=3)
+            if response.status_code == requests.codes.ok:
+                return response.text
+            return None
+        except requests.RequestException:
+            print('请求出错')
+            return None
+
     def operate(self):
-        postdata = {'Login.Token1': self.u_name, 'Login.Token2': self.u_pass,
-                    'goto': 'http://my.scu.edu.cn/loginSuccess.portal',
-                    'gotoOnFail': 'http://my.scu.edu.cn/loginFailure.portal'}
-        headers = {
-            'Referer': 'http://my.scu.edu.cn/',  # 伪装成从CSDN博客搜索到的文章
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36',
-            # 伪装成浏览器
-            'Connection': 'keep-alive',
-            'Accept-language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
-            'Accept-encoding': 'gzip, deflate',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Host': 'my.scu.edu.cn'
-        }
-        response = self.session.post('http://my.scu.edu.cn/userPasswordValidate.portal', data=postdata, headers=headers,
-                                     timeout=3)
-        text1 = response.text
+        text1 = self.get_response()
         condition = 'handleLoginSuccessed'
         if condition in text1:
             return True
