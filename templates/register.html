@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>注册</title>
+  </head>
+  <body>
+    <h3>注册</h3>
+    <form class="form" action="{% url 'CTF:register' %}" method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }} 
+        {% if field.help_text %}
+            <p>{{ field.help_text|safe }}</p>
+        {% endif %}
+      {% endfor %}
+      <button type="submit" class="btn btn-primary btn-block">注册</button>
+    </form>
+  </body>
+</html>
