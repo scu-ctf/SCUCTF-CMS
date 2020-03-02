@@ -44,9 +44,8 @@ class Login:
     def get_name(self):
         url = 'http://my.scu.edu.cn/'
         headers = {
-            'Referer': 'http://my.scu.edu.cn/',  # 伪装成从CSDN博客搜索到的文章
+            'Referer': 'http://my.scu.edu.cn/',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.75 Safari/537.36',
-            # 伪装成浏览器
             'Connection': 'keep-alive',
             'Accept-language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
             'Accept-encoding': 'gzip, deflate',
@@ -56,9 +55,7 @@ class Login:
         response = self.session.get(url, headers=headers, timeout=3)
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
-        li_all = soup.find_all(id='welcomeMsg')
-        for li_all in li_all:
-            get_name = re.split(r'：', li_all.text)
+        get_name = re.split(r'：', soup.li.text)
         result = get_name[1]
         return result
         # if response3.status_code == 200:
