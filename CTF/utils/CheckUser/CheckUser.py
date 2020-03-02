@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+
 '''
     注释：
         1.输入用户名和密码并传入Login
@@ -18,7 +19,7 @@ class Login:
         self.u_pass = passpord
         self.session = requests.session()
 
-    def get_response(self):
+    def __get_response(self):
         try:
             postdata = {'Login.Token1': self.u_name, 'Login.Token2': self.u_pass,
                         'goto': 'http://my.scu.edu.cn/loginSuccess.portal',
@@ -43,8 +44,12 @@ class Login:
             print('请求出错')
             return None
 
-    def operate(self):
-        text1 = self.get_response()
+    def check_auth(self):
+        """
+        Try login to check the availability of the account.
+        :return: True for success
+        """
+        text1 = self.__get_response()
         condition = 'handleLoginSuccessed'
         if condition in text1:
             return True
@@ -52,6 +57,10 @@ class Login:
             return False
 
     def get_name(self):
+        """
+        Try get name of the account.
+        :return: a string for name
+        """
         url = 'http://my.scu.edu.cn/'
         headers = {
             'Referer': 'http://my.scu.edu.cn/',
@@ -78,7 +87,7 @@ if __name__ == '__main__':
     password = input('password:')
     while True:
         generator = Login(username, password)
-        status = generator.operate()
+        status = generator.check_auth()
         if status:
             print(generator.get_name())
             print('登录验证成功')
