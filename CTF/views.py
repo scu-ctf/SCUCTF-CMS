@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout as logout_
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
-from .auth import try_login, create_user, logout
+from .auth import try_login, create_user
 
 
 # Create your views here.
@@ -16,7 +16,7 @@ def index(request):
     :return: 返回渲染后页面
     """
     if request.user.is_authenticated():
-        return render(request, 'index.html',  {
+        return render(request, 'index.html', {
             'user': request.user
         })
     return render(request, 'index.html')
