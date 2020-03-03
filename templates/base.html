@@ -1,64 +1,12 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.js' %}"></script>
-    <script>
-        $(document).ready(function () {
-            $(".topBar .topBarLinks #homeLink").mouseenter(function () {
-                $(this).animate({
-                    backgroundColor: "#f0f2f5"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #homeLink").mouseleave(function () {
-                $(this).animate({
-                    backgroundColor: "#ffffff"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #newsLink").mouseenter(function () {
-                $(this).animate({
-                    backgroundColor: "#f0f2f5"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #newsLink").mouseleave(function () {
-                $(this).animate({
-                    backgroundColor: "#ffffff"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #challengesLink").mouseenter(function () {
-                $(this).animate({
-                    backgroundColor: "#f0f2f5"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #challengesLink").mouseleave(function () {
-                $(this).animate({
-                    backgroundColor: "#ffffff"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #toolsLink").mouseenter(function () {
-                $(this).animate({
-                    backgroundColor: "#f0f2f5"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #toolsLink").mouseleave(function () {
-                $(this).animate({
-                    backgroundColor: "#ffffff"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #aboutLink").mouseenter(function () {
-                $(this).animate({
-                    backgroundColor: "#f0f2f5"
-                }, 500);
-            });
-            $(".topBar .topBarLinks #aboutLink").mouseleave(function () {
-                $(this).animate({
-                    backgroundColor: "#ffffff"
-                }, 500);
-            });
-        });
-    </script>
+    {% block css %}
+    {% endblock %}
+
 </head>
 <body>
 <div class="topBar">
@@ -73,24 +21,84 @@
     <div class="topBarUser">userName</div>
 </div>
 <div class="content">
-    <div id="home">
-
-    </div>
-    <div id="news">
-
-    </div>
-    <div id="challenges">
-
-    </div>
-    <div id="tools">
-
-    </div>
-    <div id="about">
-
-    </div>
+    {% block content %}
+    {% endblock %}
+    {#    <div id="home">#}
+    {##}
+    {#    </div>#}
+    {#    <div id="news">#}
+    {##}
+    {#    </div>#}
+    {#    <div id="challenges">#}
+    {##}
+    {#    </div>#}
+    {#    <div id="tools">#}
+    {##}
+    {#    </div>#}
+    {#    <div id="about">#}
+    {##}
+    {#    </div>#}
 </div>
 <div class="footer">
     <p>联系邮箱：example@scuctf.com<br>联系地址：双流男子职业技术学院</p>
 </div>
 </body>
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $(".topBar .topBarLinks #homeLink").mouseenter(function () {
+            $(this).animate({
+                backgroundColor: "#f0f2f5"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #homeLink").mouseleave(function () {
+            $(this).animate({
+                backgroundColor: "#ffffff"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #newsLink").mouseenter(function () {
+            $(this).animate({
+                backgroundColor: "#f0f2f5"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #newsLink").mouseleave(function () {
+            $(this).animate({
+                backgroundColor: "#ffffff"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #challengesLink").mouseenter(function () {
+            $(this).animate({
+                backgroundColor: "#f0f2f5"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #challengesLink").mouseleave(function () {
+            $(this).animate({
+                backgroundColor: "#ffffff"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #toolsLink").mouseenter(function () {
+            $(this).animate({
+                backgroundColor: "#f0f2f5"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #toolsLink").mouseleave(function () {
+            $(this).animate({
+                backgroundColor: "#ffffff"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #aboutLink").mouseenter(function () {
+            $(this).animate({
+                backgroundColor: "#f0f2f5"
+            }, 500);
+        });
+        $(".topBar .topBarLinks #aboutLink").mouseleave(function () {
+            $(this).animate({
+                backgroundColor: "#ffffff"
+            }, 500);
+        });
+    });
+</script>
+{% block script %}
+{% endblock %}
 </html>
