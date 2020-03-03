@@ -27,7 +27,7 @@ def register(request):
     注册账户
     :param request:
     """
-    if request.method == 'POST':
+    if request.method == 'POST' and not request.user.is_active:
         form = RegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -47,15 +47,15 @@ def login(request):
     登录账户
     :param request:
     """
-    if request.method == 'POST':
+    if request.method == 'POST' and not request.user.is_authenticated:
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
             user = try_login(request, username, password)
-            if user:
-                return redirect("/CTF/index")
+            if user.is_authenticated:
+                return redirect(index)
     else:
         form = LoginForm()
 
@@ -69,5 +69,7 @@ def logout(request):
     :param request: 这个我觉得不用说明
     :return: null
     """
-    logout_(request)
-    return redirect("/CTF/index")
+    if request.user.is_authenticated:
+        logout_(request)
+        return redirect(index)
+    return redirect(index)
