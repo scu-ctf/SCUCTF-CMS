@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout as logout_
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
-from .auth import try_login, create_user, logout
 from SCUCTF_CMS.settings import STATIC_URL, STATIC_ROOT, DEBUG
 from .utils import util
 
