@@ -123,6 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'clollected_static')
+<<<<<<< HEAD
 
 
 # 邮箱设置
@@ -137,3 +138,6 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+=======
+STATICFILES_STORAGE = os.path.join(BASE_DIR, "CTF/static")
+>>>>>>> 89b3f1b5a8d5f1a7e020541064537fef19d2ba06
