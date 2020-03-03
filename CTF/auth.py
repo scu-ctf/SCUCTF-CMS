@@ -38,5 +38,7 @@ def create_superuser(username: str, password: str, email: str) -> bool:
 
 def try_login(request, username, password):
     user = authenticate(username=username, password=password)
-    login(request, user)
-    return user
+    if user:
+        login(request, user)
+        return True
+    return False
