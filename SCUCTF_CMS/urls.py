@@ -20,11 +20,8 @@ from CTF.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', index),
-    path('', include('CTF.urls'),name='login'),
-    path('', include('CTF.urls'),name='register'),
+    path('', include('CTF.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('', include('CTF.urls'),name='logout'),
     re_path(r'^$', index, name='index')
 
 ]
