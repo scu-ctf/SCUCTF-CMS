@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from CTF.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('CTF/', include('CTF.urls'))
+    path('index', index),
+    path('login', login),
+    path('register', register),
 ]
