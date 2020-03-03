@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout as logout_
 from django.contrib.auth.decorators import login_required
-from .forms import RegisterForm
-from .auth import *
+from .forms import RegisterForm, LoginForm
+from .auth import try_login, create_user, logout
 
 
 # Create your views here.
@@ -32,6 +32,27 @@ def register(request):
 
     return render(request, 'register.html', {'form': form})
 
+
+def login(request):
+    """
+    登录账户
+    :param request:
+    """
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = try_login(request, username, password)
+            if user:
+                return redirect("/CTF/index")
+    else:
+        form = LoginForm()
+
+    return render(request, 'login.html', {'form': form})
+
+
 @login_required
 def logout(request):
     """
@@ -40,3 +61,4 @@ def logout(request):
     :return: null
     """
     logout_(request)
+    return redirect("/CTF/index")

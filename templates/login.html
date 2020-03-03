@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>登录</title>
+  </head>
+  <body>
+    <h3>登录</h3>
+    <form class="form" action="{% url 'CTF:login' %}" method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+        {% if field.help_text %}
+          <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+        {% endif %}
+      {% endfor %}
+      <button type="submit">登录</button>
+    </form>
+    <div>
+      <div>
+        <span>没有账号？<a href="{% url 'CTF:register' %}">立即注册</a></span>
+      </div>
+      <div>
+        <span><a href="reset_password.html">忘记密码？</a></span>
+      </div>
+    </div>
+  </body>
+</html>
