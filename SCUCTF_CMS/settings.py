@@ -132,3 +132,5 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "CTF", "static")]
+
+LOGIN_URL = "/login"
