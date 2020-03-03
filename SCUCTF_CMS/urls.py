@@ -19,7 +19,8 @@ from CTF.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', index),
-    path('login', login),
-    path('register', register),
+    path('index', index, name='index'),
+    path('login', login, name='login'),
+    path('register', register, name='register'),
+    path('logout', logout, name='logout'),
 ]

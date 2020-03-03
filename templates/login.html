@@ -6,7 +6,7 @@
   </head>
   <body>
     <h3>登录</h3>
-    <form class="form" action="{% url 'CTF:login' %}" method="post">
+    <form class="form" action="{% url 'login' %}" method="post">
       {% csrf_token %}
       {{ form.non_field_errors }}
       {% for field in form %}
@@ -21,7 +21,7 @@
     </form>
     <div>
       <div>
-        <span>没有账号？<a href="{% url 'CTF:register' %}">立即注册</a></span>
+        <span>没有账号？<a href="{% url 'register' %}">立即注册</a></span>
       </div>
       <div>
         <span><a href="reset_password.html">忘记密码？</a></span>
