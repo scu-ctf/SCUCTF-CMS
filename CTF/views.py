@@ -70,5 +70,4 @@ def logout(request):
     """
     if request.user.is_authenticated:
         logout_(request)
-        return redirect(index)
     return redirect(index)
