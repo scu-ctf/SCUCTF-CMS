@@ -1,95 +1,96 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-        <script src="{% static 'js/jquery-ui.js' %}"></script>
-        <script>
-            $(document).ready(function() {
-                $(".topBar .topBarLinks #homeLink").mouseenter(function() {
-                    $(this).animate({
-                        backgroundColor: "#f0f2f5"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #homeLink").mouseleave(function() {
-                    $(this).animate({
-                        backgroundColor: "#ffffff"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #newsLink").mouseenter(function() {
-                    $(this).animate({
-                        backgroundColor: "#f0f2f5"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #newsLink").mouseleave(function() {
-                    $(this).animate({
-                        backgroundColor: "#ffffff"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #challengesLink").mouseenter(function() {
-                    $(this).animate({
-                        backgroundColor: "#f0f2f5"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #challengesLink").mouseleave(function() {
-                    $(this).animate({
-                        backgroundColor: "#ffffff"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #toolsLink").mouseenter(function() {
-                    $(this).animate({
-                        backgroundColor: "#f0f2f5"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #toolsLink").mouseleave(function() {
-                    $(this).animate({
-                        backgroundColor: "#ffffff"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #aboutLink").mouseenter(function() {
-                    $(this).animate({
-                        backgroundColor: "#f0f2f5"
-                    }, 500);
-                });
-                $(".topBar .topBarLinks #aboutLink").mouseleave(function() {
-                    $(this).animate({
-                        backgroundColor: "#ffffff"
-                    }, 500);
-                });
+<head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $(".topBar .topBarLinks #homeLink").mouseenter(function () {
+                $(this).animate({
+                    backgroundColor: "#f0f2f5"
+                }, 500);
             });
-        </script>
-    </head>
-    <body>
-        <div class="topBar">
-            <img src="{% static 'img/fakeLogo.JPG' %}" id="scuctfLogo">
-            <div class="topBarLinks">
-                <div id="homeLink"><a href="#home">首页</a></div>
-                <div id="newsLink"><a href="#news">赛事日历</a></div>
-                <div id="challengesLink"><a href="#challenges">题库</a></div>
-                <div id="toolsLink"><a href="#tools">工具</a></div>
-                <div id="aboutLink"><a href="#about">关于我们</a></div>
-            </div>
-            <div class="topBarUser">userName</div>
-        </div>
-        <div class="content">
-            <div id="home">
+            $(".topBar .topBarLinks #homeLink").mouseleave(function () {
+                $(this).animate({
+                    backgroundColor: "#ffffff"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #newsLink").mouseenter(function () {
+                $(this).animate({
+                    backgroundColor: "#f0f2f5"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #newsLink").mouseleave(function () {
+                $(this).animate({
+                    backgroundColor: "#ffffff"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #challengesLink").mouseenter(function () {
+                $(this).animate({
+                    backgroundColor: "#f0f2f5"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #challengesLink").mouseleave(function () {
+                $(this).animate({
+                    backgroundColor: "#ffffff"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #toolsLink").mouseenter(function () {
+                $(this).animate({
+                    backgroundColor: "#f0f2f5"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #toolsLink").mouseleave(function () {
+                $(this).animate({
+                    backgroundColor: "#ffffff"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #aboutLink").mouseenter(function () {
+                $(this).animate({
+                    backgroundColor: "#f0f2f5"
+                }, 500);
+            });
+            $(".topBar .topBarLinks #aboutLink").mouseleave(function () {
+                $(this).animate({
+                    backgroundColor: "#ffffff"
+                }, 500);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="topBar">
+    <img src="{% static 'img/fakeLogo.JPG' %}" id="scuctfLogo">
+    <div class="topBarLinks">
+        <div id="homeLink"><a href="#home">首页</a></div>
+        <div id="newsLink"><a href="#news">赛事日历</a></div>
+        <div id="challengesLink"><a href="#challenges">题库</a></div>
+        <div id="toolsLink"><a href="#tools">工具</a></div>
+        <div id="aboutLink"><a href="#about">关于我们</a></div>
+    </div>
+    <div class="topBarUser">userName</div>
+</div>
+<div class="content">
+    <div id="home">
 
-            </div>
-            <div id="news">
+    </div>
+    <div id="news">
 
-            </div>
-            <div id="challenges">
+    </div>
+    <div id="challenges">
 
-            </div>
-            <div id="tools">
+    </div>
+    <div id="tools">
 
-            </div>
-            <div id="about">
+    </div>
+    <div id="about">
 
-            </div>
-        </div>
-        <div class="footer">
-            <p>联系邮箱：example@scuctf.com<br>联系地址：双流男子职业技术学院</p>
-        </div>
-    </body>
+    </div>
+</div>
+<div class="footer">
+    <p>联系邮箱：example@scuctf.com<br>联系地址：双流男子职业技术学院</p>
+</div>
+</body>
 </html>
