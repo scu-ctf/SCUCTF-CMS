@@ -34,7 +34,7 @@
                         {% for field in form %}
                             <div class="md-form">
                                 {{ field }}
-                                <label for="materialLoginFormEmail">{{ field.label }}</label>
+                                <label>{{ field.label }}</label>
                                 {{ field.errors }}
                                 {% if field.help_text %}
                                     <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
