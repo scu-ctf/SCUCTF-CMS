@@ -15,11 +15,13 @@ def index(request):
     :param request: 用户请求
     :return: 返回渲染后页面
     """
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
+        # is_authenticated() is not callable
         return render(request, 'index.html',  {
             'user': request.user
         })
-    return render(request, 'index.html')
+    else:
+        return render(request, 'index.html')
 
 
 def register(request):

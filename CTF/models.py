@@ -37,4 +37,7 @@ class User(AbstractUser):
 
     # 上次登录时间（已经被系统实现了）
     # last_login = models.DateTimeField(auto_now_add=True, auto_now=True, help_text='上次登录时间')
+    class Meta(AbstractUser.Meta):
+        pass
+
 

@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from CTF.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index', index),
-    path('login', login),
-    path('register', register),
+    path('', include('CTF.urls'),name='login'),
+    path('', include('CTF.urls'),name='register'),
+    path('', include('django.contrib.auth.urls')),
+    url(r'^$', index, name='index')
+
 ]

@@ -126,3 +126,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'clollected_static')
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = "smtpdm.aliyun.com"
+EMAIL_HOST_USER = "admin@scuctf.com"
+EMAIL_HOST_PASSWORD = "4Lrkuj9JE5HMXEe"
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
