@@ -14,7 +14,8 @@ class User(AbstractUser):
     # password = models.CharField(blank=False, null=False, max_length=32, help_text='密码')
 
     # 头像路径
-    avatar = models.CharField(default="", blank=False, null=True, unique=True, max_length=64, help_text='头像')
+    avatar = models.CharField(default="/static/upload/avatar.jpg", blank=False, null=True, unique=True, max_length=64,
+                              help_text='头像')
 
     # 积分: 可在商城兑换的积分，不是CTF比赛的积分
     points = models.IntegerField(default=0, blank=False, null=False, help_text='积分')
