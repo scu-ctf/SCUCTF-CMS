@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block title %}登录{% endblock %}
 {% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/fontawesome..min.css" %}">
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/mdb.min.css" %}">
+
     <style>
         .errorlist {
             color: red;
@@ -9,32 +14,84 @@
     </style>
 {% endblock %}
 {% block content %}
-    <div class="flex-center">
-        <div class="container">
-            <div class="flex-center">
-                <div class="unit-1-2 unit-1-on-mobile">
-                    <h3>登录</h3>
-                    <form class="form" action="{% url 'CTF:login' %}" method="post">
+    <div class="container">
+        <div class="col-md-offset-4 col-md-4">
+            <!-- Material form login -->
+            <div class="card">
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong>登录</strong>
+                </h5>
+
+                <!--Card content-->
+                <div class="card-body px-lg-5 pt-0">
+
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" action="{% url 'CTF:login' %}">
                         {% csrf_token %}
+                        <!-- Email -->
                         {{ form.non_field_errors }}
                         {% for field in form %}
-                            {{ field.label_tag }}
-                            {{ field }}
-                            {{ field.errors }}
-                            {% if field.help_text %}
-                                <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
-                            {% endif %}
+                            <div class="md-form">
+                                {{ field }}
+                                <label for="materialLoginFormEmail">{{ field.label }}</label>
+                                {{ field.errors }}
+                                {% if field.help_text %}
+                                    <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+                                {% endif %}
+                            </div>
                         {% endfor %}
-                        <button type="submit" class="btn btn-primary btn-block">登录</button>
-                    </form>
-                    <div class="flex-left top-gap text-small">
-                        <div class="unit-2-3"><span>没有账号？<a href="{% url 'CTF:register' %}">立即注册</a></span></div>
-                        <div class="unit-1-3 flex-right"><span><a href="{% url 'password_reset' %}">忘记密码？</a></span>
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Remember me -->
+                                <div class="form-check">
+                                    {{ form.remember }}
+                                    <label class="form-check-label" for="materialLoginFormRemember">记住我</label>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Forgot password -->
+                                <a href="">忘记密码？</a>
+                            </div>
                         </div>
-                        >
-                    </div>
+
+                        <!-- Sign in button -->
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                                type="submit">登录
+                        </button>
+
+                        <!-- Register -->
+                        <p>没有帐号？
+                            <a href="{% url "register" %}">注册</a>
+                        </p>
+
+                        <!-- Social login -->
+                        <p>或者使用其它方式登录：</p>
+                        <a type="button" class="btn-floating btn-fb btn-sm">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a type="button" class="btn-floating btn-tw btn-sm">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a type="button" class="btn-floating btn-li btn-sm">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a type="button" class="btn-floating btn-git btn-sm">
+                            <i class="fab fa-github"></i>
+                        </a>
+
+                    </form>
+                    <!-- Form -->
+
                 </div>
+
             </div>
+            <!-- Material form login -->
         </div>
     </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static "js/popper.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/mdb.min.js" %}"></script>
 {% endblock %}
