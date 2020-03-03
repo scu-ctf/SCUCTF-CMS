@@ -55,8 +55,7 @@ def login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
-            user = try_login(request, username, password)
-            if user.is_authenticated:
+            if try_login(request, username, password):
                 return redirect(index)
     else:
         form = LoginForm()
@@ -73,7 +72,6 @@ def logout(request):
     """
     if request.user.is_authenticated:
         logout_(request)
-        return redirect(index)
     return redirect(index)
 
 
