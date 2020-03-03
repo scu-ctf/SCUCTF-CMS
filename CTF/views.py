@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import logout as logout_
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
-from .auth import create_user, try_login, create_superuser
-from SCUCTF_CMS.settings import STATIC_URL, STATIC_ROOT, DEBUG
+from .auth import create_user, try_login
+from SCUCTF_CMS.settings import STATIC_URL
 from .utils import util
 
 
@@ -30,18 +30,17 @@ def register(request):
     注册账户
     :param request:
     """
-    if request.method == 'POST' and not request.user.is_active:
+    if request.user.is_authenticated:
+        return redirect(index)
+    if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             email = form.cleaned_data['email']
-
             if create_user(username, password, email):
                 return redirect(index)
-    else:
-        form = RegisterForm()
-
+    form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
 
@@ -50,17 +49,19 @@ def login(request):
     登录账户
     :param request:
     """
-    if request.method == 'POST' and not request.user.is_authenticated:
+    if request.user.is_authenticated:
+        return redirect(index)
+    if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-
             if try_login(request, username, password):
+                next_url = request.GET.get('next', False)
+                if next_url:
+                    return HttpResponseRedirect(next_url)
                 return redirect(index)
-    else:
-        form = LoginForm()
-
+    form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
 
@@ -122,6 +123,7 @@ def user_center(request):
                 'user': request.user,
                 'tips': '参数错误'
             })
-    return render('user_center.html', request, {
+    print(request.user.username)
+    return render(request, 'user_center.html', {
         'user': request.user
     })
