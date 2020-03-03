@@ -8,9 +8,9 @@
 所有HTML文档都在这儿
 {% if user.is_authenticated %}
     <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-    <a href={% url 'CTF:logout' %}>logout here</a>
+    <a href={% url 'logout' %}>logout here</a>
 {% else %}
-    <p>Welcome, new user. Please <a href={% url 'CTF:login' %}>log in</a>.</p>
+    <p>Welcome, new user. Please <a href={% url 'login' %}>log in</a>.</p>
 {% endif %}
 </body>
 </html>

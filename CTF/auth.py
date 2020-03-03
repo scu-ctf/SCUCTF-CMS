@@ -1,6 +1,6 @@
 from .models import User
 from time import time
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 
 
 def create_user(username: str, password: str, email: str) -> bool:
