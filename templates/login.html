@@ -2,7 +2,7 @@
 {% block title %}登录{% endblock %}
 {% block css %}
     {% load static %}
-    <link rel="stylesheet" href="{% static "css/fontawesome..min.css" %}">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "css/mdb.min.css" %}">
@@ -15,11 +15,11 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <div class="col-md-offset-4 col-md-4">
+        <div class="col-md-4 offset-md-4" style="margin-top: 2em;">
             <!-- Material form login -->
             <div class="card">
 
-                <h5 class="card-header info-color white-text text-center py-4">
+                <h5 class="card-header elegant-color white-text text-center py-4">
                     <strong>登录</strong>
                 </h5>
 
@@ -31,16 +31,24 @@
                         {% csrf_token %}
                         <!-- Email -->
                         {{ form.non_field_errors }}
-                        {% for field in form %}
-                            <div class="md-form">
-                                {{ field }}
-                                <label>{{ field.label }}</label>
-                                {{ field.errors }}
-                                {% if field.help_text %}
-                                    <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
+
+                        <div class="md-form">
+                            {{ form.username }}
+                            <label>{{ form.username.label }}</label>
+                            {{ form.username.errors }}
+                            {% if form.username.help_text %}
+                                <p class="help text-small text-muted">{{ form.username.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="md-form">
+                            {{ form.password }}
+                            <label>{{ form.password.label }}</label>
+                            {{ form.password.errors }}
+                            {% if form.password.help_text %}
+                                <p class="help text-small text-muted">{{ form.password.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+
                         <div class="d-flex justify-content-around">
                             <div>
                                 <!-- Remember me -->
@@ -56,28 +64,28 @@
                         </div>
 
                         <!-- Sign in button -->
-                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+                        <button class="btn btn-outline-elegant btn-rounded btn-block my-4 waves-effect z-depth-0"
                                 type="submit">登录
                         </button>
 
                         <!-- Register -->
                         <p>没有帐号？
-                            <a href="{% url "register" %}">注册</a>
+                            <a href="{% url "CTF:register" %}">注册</a>
                         </p>
 
                         <!-- Social login -->
                         <p>或者使用其它方式登录：</p>
                         <a type="button" class="btn-floating btn-fb btn-sm">
-                            <i class="fab fa-facebook-f"></i>
+                            <i class="fa fa-facebook-f"></i>
                         </a>
                         <a type="button" class="btn-floating btn-tw btn-sm">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fa fa-twitter"></i>
                         </a>
                         <a type="button" class="btn-floating btn-li btn-sm">
-                            <i class="fab fa-linkedin-in"></i>
+                            <i class="fa fa-linkedin"></i>
                         </a>
                         <a type="button" class="btn-floating btn-git btn-sm">
-                            <i class="fab fa-github"></i>
+                            <i class="fa fa-github"></i>
                         </a>
 
                     </form>

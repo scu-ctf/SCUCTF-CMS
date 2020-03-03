@@ -12,5 +12,5 @@ class RegisterForm(UserCreationForm):
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="用户名", max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(label="密码", max_length=32, widget=forms.PasswordInput)
+    password = forms.CharField(label="密码", max_length=32, widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     remember = forms.BooleanField(label="记住我", widget=forms.CheckboxInput(attrs={'class': 'form-check-label'}))
