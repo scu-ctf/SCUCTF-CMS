@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout as logout_
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
-from .auth import create_user, try_login
+from .auth import create_user, try_login, create_superuser
 from SCUCTF_CMS.settings import STATIC_URL, STATIC_ROOT, DEBUG
 from .utils import util
 
@@ -18,7 +18,7 @@ def index(request):
     :return: 返回渲染后页面
     """
     if request.user.is_authenticated:
-        return render(request, 'index.html',  {
+        return render(request, 'index.html', {
             'user': request.user
         })
     else:
@@ -83,7 +83,7 @@ def user_center(request):
     :param request:
     :return:
     """
-    if request.method =='POST':
+    if request.method == 'POST':
         setting_type = request.POST.get('type', None)
         if not setting_type:
             return render('user_center.html', request, {
@@ -105,9 +105,9 @@ def user_center(request):
                     'tips': '头像修改成功'
                 })
             return render(request, 'user_center.html', {
-                    'user': request.user,
-                    'tips': '请上传头像'
-                })
+                'user': request.user,
+                'tips': '请上传头像'
+            })
         # 保留
         elif setting_type == 2:
             pass
@@ -123,5 +123,5 @@ def user_center(request):
                 'tips': '参数错误'
             })
     return render('user_center.html', request, {
-                'user': request.user
-            })
+        'user': request.user
+    })
