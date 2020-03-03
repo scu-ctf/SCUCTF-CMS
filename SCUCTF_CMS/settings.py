@@ -69,19 +69,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SCUCTF_CMS.wsgi.application'
 
-AUTH_USER_MODEL = 'CTF.models.User'
+# AUTH_USER_MODEL = 'CTF.models.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'USERNAME',
-        'PASSWORD': 'PASSWORD',
-        'NAME': 'scu_ctf',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'data.db')
     }
 }
 
@@ -124,7 +120,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'clollected_static')
 
-
 # 邮箱设置
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
@@ -136,5 +131,4 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-
-STATICFILES_STORAGE = os.path.join(BASE_DIR, "CTF/static")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "CTF", "static")]
