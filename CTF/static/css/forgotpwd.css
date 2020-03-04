@@ -1,0 +1,44 @@
+body{
+    background:#f0f2f5; 
+ }
+#email { 
+    text-align: center; 
+    } 
+#password{ 
+    text-align: center; 
+    }
+#password_again{ 
+    text-align: center; 
+    }
+/*card start here*/
+.card {
+    background-color: #f0f2f5;
+    /*font-size: 24px;*/
+}
+.card-top {
+    width:22%;
+    margin:16em auto 0em;
+    background: #000;
+    padding:0.8em;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    text-transform: uppercase;
+    position: relative;
+}
+.card-bottom {
+    width:22%;
+    padding: 3em;
+    margin:0em auto 6em;
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.1); 
+}
+.card h4 {
+    color: #FFF;
+}
+.card p {
+    font-size: 1.2em;
+    color: #696969;
+    text-align:center;
+}
+/*card end here*/
